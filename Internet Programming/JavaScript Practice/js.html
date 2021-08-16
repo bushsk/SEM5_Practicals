@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .grid{
+        display:flex;
+        flex:wrap;
+        height:300px;
+        width:400px;
+    }
+</style>
+<body>
+    <h3>Score:<span id="result"></span></h3>
+    <div class="grid">
+
+    </div>
+    <script>
+        document.addEventListener('DOMContnetLoaded',()=>{
+
+            const cardArray =[
+                {
+                    name:'fries',
+                    image:'images/blank.png'
+                },
+                {
+                    name:'fries',
+                    image:'images/fries.png'
+                },
+                {
+                    name:'fries',
+                    image:'images/fries.png'
+                },
+            ]
+
+
+            cardArray.sort(()=>0.5 - Math.random())
+            const grid = document.querySelector('.grid')
+            const resultDisplay= document.querySelectorAll('#result')
+
+            function createBoard(){
+                for(let i=0;i<cardArray.length;i++){
+                    var card = document.createElement('img')
+                    card.setAttribute('src','blank.jpg')
+                    card.setAttribute('data-id',i)
+                    // crd.addEventListener('click',flipcard)
+                    grid.appendChild(card)
+
+                }
+            }
+
+            function checkForMatch(){
+                var cards = document.querySelectorAll('img')
+                const optionOneId = cardsChosenId[0]
+                const optionTwoId = cardsChosenId[1]
+                 if(cardsChosenId[0]===cardsChosenId[1]){
+                     alert('You found a match')
+                     cards[optionOneId].setAttribute('src','images/white.png')
+                     cards[optionTwoId].setAttribute('src','images/white.png')
+                     cardsWon.push(cardsChosen)
+
+
+                 }
+                 else{
+                    cards[optionOneId].setAttribute('src','images/white.png')
+                     cards[optionTwoId].setAttribute('src','images/white.png')
+                     alert("sorry try again")
+                 }
+                 cardsChosen = []
+                 cardChosenId =[]
+                 resultDisplay.textContent = cardsWon.length
+                 if (cardsWon.length === cardArray.length/2){
+                     resultDisplay.textContent = "Congratulations"
+                 }
+            }
+
+            function flipcard(){
+                var cardId = this.getAttribute('data-id')
+                cardsChosen.push(cardArray[cardId].name)
+                cardChosenId.push(cardId)
+                this.setAttribute('src',cardArray[cardId].img)
+                if(cardChosen.length === 2){
+                    setTimeout(checkForMatch,500)
+                }
+            }
+            createBoard()
+        })
+    </script>
+</body>
+</html>
