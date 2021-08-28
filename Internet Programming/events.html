@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventst</title>
+</head>
+<body onload="myload()">
+
+    <div>Enter your name</div>
+    <input type="text" id="input" onfocus="focusevent(this)">
+  
+   <input type="button" onclick="showname()" value="submit">
+   <input type="button" onclick="date()" id="input1" value="Know the year">
+   <p onmouseover="mouseover()">Cursor here!</p>
+
+    <script language="JavaScript" type="text/JavaScript">
+        function myload(){
+            alert("The page is loaded!")
+        }
+        function mouseover(){
+            alert("Mouseover");
+        }
+        function date(){
+document.write("2021");        }
+        function focusevent(){
+                  document.getElementById("input").style.color="red";
+        }
+        function showname(){
+           
+            document.write("Welcome here!");
+           
+        }
+
+       
+
+    </script>
+</body>
+</html>
