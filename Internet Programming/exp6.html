@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Events</title>
+
+    <style>
+        .droptarget {
+                 float: left; 
+                 width: 100px; 
+                 height: 35px;
+                 margin: 15px;
+                 padding: 10px;
+                 border: 1px solid #aaaaaa;
+                    }
+    </style>
+</head>
+<body >
+    <p>Open the details.</p>
+
+    <details ontoggle="ontoggleevent()">
+    <summary>Copyright 1999-2014.</summary>
+    <p> - by Refsnes Data. All Rights Reserved.</p>
+    <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
+    </details>
+
+    <h1>Hello World</h1>
+    <p>Write something in the search field and press "ENTER".</p>
+
+    <input type="search" id="myInput" onsearch="myFunction3()" placeholder="Search">
+    <p>This example demonstrates how to assign an "onafterprint" event to a body element.</p>
+    
+    <body onafterprint="myFunction2()">
+
+    <h1>Try to print this document</h1>
+    <p><b>Tip:</b> Keyboard shortcuts, such as Ctrl+P sets the page to print.</p>
+    <p><b>Note:</b> The onafterprint event is not supported in Safari and Opera.</p>
+    
+
+    Enter your last name: <input type="text" id="lname" onblur="myFunction1()">
+    <p>When you leave the input field, a function is triggered which transforms the input text to upper case.</p>
+
+    <h2>Enter Something here</h2>
+    <input type="text" id="input1" onkeydown="keydownevent()">
+
+    <h2>Enter your name here</h2>
+    <input type="text" id="input2" onfocus="focusevent(this)">
+
+    <p>Drag the p element back and forth between the two rectangles:</p>
+
+    <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget">Drag me!</p>
+    </div>
+
+    <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+    <p style="clear:both;"><strong>Note:</strong> drag events are not supported in Internet Explorer 8 and earlier versions or Safari 5.1 and earlier versions.</p>
+
+    <p id="demo"></p> 
+
+    <script language="JavaScript" type="text/javascript">
+    function ontoggleevent()
+    {
+        alert("The ontoggle event occured");
+    }
+    function myFunction3(a) 
+    {
+      a = document.getElementById("myInput");
+      document.getElementById("demo").innerHTML = "You are searching for: " + a.value;
+    } 
+    function clickevent()
+    {
+        document.write("Hello SIES!");
+    }
+    function mouseoverevent()
+    {
+        alert("This is mouse over event");
+    }
+    function keydownevent()
+    {
+        document.getElementById("input 1");
+        alert("Pressed a key");
+    }
+    function focusevent(y)
+    {
+        y.style.background = "aqua";
+    }
+    function myFunction()
+    {
+        alert("Page is loaded");
+    }
+    function dragStart(event) 
+    {
+       event.dataTransfer.setData("Text", event.target.id);
+    }
+    function dragging(event) 
+    {
+       document.getElementById("demo").innerHTML = "The p element is being dragged";
+    }
+    function allowDrop(event) 
+    {
+       event.preventDefault();
+    }
+
+    function drop(event) 
+    {
+       event.preventDefault();
+       var data = event.dataTransfer.getData("Text");
+       event.target.appendChild(document.getElementById(data));
+       document.getElementById("demo").innerHTML = "The p element was dropped";
+    }
+    function myFunction1() 
+    {
+       var x = document.getElementById("lname");
+       x.value = x.value.toUpperCase();
+    }
+    function myFunction2() 
+    {
+      alert("This document is now being printed");
+    } 
+    
+    </script>
+    <form>
+        <input type="button" onclick="clickevent()" value="Hello"/>
+    </form>
+    <p onmouseover ="mouseoverevent()">Click on the mouse.</p> 
+</body>
+</html>
